@@ -1,4 +1,4 @@
-# SCards
+# Sword's Cards
 A moderately-sized Rounds game card expansion mod with the goal of filling gaps in the card library.
 
 
