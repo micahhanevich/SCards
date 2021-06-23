@@ -26,7 +26,7 @@ namespace SCards {
 
         private void Awake() {
 
-            new Harmony("swords.rounds.plugins.swordscardexpansion");
+            new Harmony(ModId);
 
         }
         private void Start() {
@@ -39,9 +39,9 @@ namespace SCards {
 
         }
 
-        private const string ModId = "swords.rounds.plugins.swordscards";
+        private const string ModId = "swords.rounds.plugins.scards";
         private const string ModName = "Sword's Cards";
-        private const string ModVersion = "0.1.0";
+        private const string ModVersion = "0.1.1";
     }
 }
 
@@ -338,7 +338,7 @@ namespace SCards.Cards {
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
 
-            gunAmmo.reloadTime *= 0.40f;
+            gunAmmo.reloadTime -= 0.50f;
             gun.spread += 0.1f;
 
         }
@@ -353,7 +353,7 @@ namespace SCards.Cards {
         }
         protected override string GetDescription()
         {
-            return "Easier reloading, but firing is slightly innacurate";
+            return "Good reload, bad shooting";
         }
         protected override GameObject GetCardArt()
         {
@@ -369,13 +369,13 @@ namespace SCards.Cards {
                 new CardInfoStat {
                     positive = true,
                     stat = "Reload Time",
-                    amount = "-50%",
-                    simepleAmount = CardInfoStat.SimpleAmount.lower
+                    amount = "-0.50s",
+                    simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 },
                 new CardInfoStat {
                     positive = false,
                     stat = "Spread",
-                    amount = "Some",
+                    amount = "A Little Bit Of",
                     simepleAmount = CardInfoStat.SimpleAmount.notAssigned
                 },
             };
@@ -397,8 +397,7 @@ namespace SCards.Cards {
         public override void OnAddCard(Player player, Gun gun, GunAmmo gunAmmo, CharacterData data, HealthHandler health, Gravity gravity, Block block, CharacterStatModifiers characterStats)
         {
 
-            gunAmmo.maxAmmo += 2;
-            gun.attackSpeed /= 1.15f;
+            gunAmmo.maxAmmo += 4;
             gun.size += 0.2f;
 
         }
@@ -413,7 +412,7 @@ namespace SCards.Cards {
         }
         protected override string GetDescription()
         {
-            return "More bullets per clip";
+            return null;
         }
         protected override GameObject GetCardArt()
         {
@@ -429,13 +428,7 @@ namespace SCards.Cards {
                 new CardInfoStat {
                     positive = true,
                     stat = "Ammo",
-                    amount = "+2",
-                    simepleAmount = CardInfoStat.SimpleAmount.Some
-                },
-                new CardInfoStat {
-                    positive = true,
-                    stat = "Attack Speed",
-                    amount = "+15%",
+                    amount = "+4",
                     simepleAmount = CardInfoStat.SimpleAmount.Some
                 },
             };
